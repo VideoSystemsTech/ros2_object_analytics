@@ -93,8 +93,7 @@ void OrganizedMultiPlaneSegmenter::segmentObjects_ConnectComponent(
     label.label = i;
     labels->points.push_back(label);
   }
-  std::vector<bool> plane_labels;
-  plane_labels.resize(cloud->size(), false);
+  pcl::EuclideanClusterComparator<PointT, Normal, Label>::ExcludeLabelSetPtr plane_labels(new pcl::EuclideanClusterComparator<PointT, Normal, Label>::ExcludeLabelSet);
   euclidean_cluster_comparator_->setInputCloud(cloud);
   euclidean_cluster_comparator_->setLabels(labels);
   euclidean_cluster_comparator_->setExcludeLabels(plane_labels);

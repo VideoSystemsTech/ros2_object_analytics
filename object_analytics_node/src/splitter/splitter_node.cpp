@@ -26,8 +26,8 @@ namespace splitter
 SplitterNode::SplitterNode(rclcpp::NodeOptions options)
 : Node("SplitterNode", options)
 {
-  pub_2d_ = create_publisher<sensor_msgs::msg::Image>(Const::kTopicRgb);
-  pub_3d_ = create_publisher<sensor_msgs::msg::PointCloud2>(Const::kTopicPC2);
+  pub_2d_ = create_publisher<sensor_msgs::msg::Image>(Const::kTopicRgb, 10);
+  pub_3d_ = create_publisher<sensor_msgs::msg::PointCloud2>(Const::kTopicPC2, 10);
 
   auto callback = [this](const typename sensor_msgs::msg::PointCloud2::SharedPtr points) -> void {
       try {
@@ -45,7 +45,7 @@ SplitterNode::SplitterNode(rclcpp::NodeOptions options)
       }
     };
   sub_pc2_ =
-    create_subscription<sensor_msgs::msg::PointCloud2>(Const::kTopicRegisteredPC2, callback);
+    create_subscription<sensor_msgs::msg::PointCloud2>(Const::kTopicRegisteredPC2, 10, callback);
 }
 }  // namespace splitter
 }  // namespace object_analytics_node

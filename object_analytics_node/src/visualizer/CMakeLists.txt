@@ -34,7 +34,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(Pangolin REQUIRED)
-find_package(OpenCV 3.2 REQUIRED)
+find_package(OpenCV REQUIRED)
 
 include_directories(
   include

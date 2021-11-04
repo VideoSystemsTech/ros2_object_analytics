@@ -47,11 +47,14 @@ public:
   {
     loc_performance_subscription_ = this->create_subscription<LocalizationMsg>(
       "/object_analytics/localization",
+      10,
       std::bind(&MarkerPublisher::loc_performance_callback, this, _1));
     loc_marker_subscription_ = this->create_subscription<LocalizationMsg>(
-      "/object_analytics/localization", std::bind(&MarkerPublisher::loc_marker_callback, this, _1));
+      "/object_analytics/localization", 
+      10,
+      std::bind(&MarkerPublisher::loc_marker_callback, this, _1));
     marker_pub_ =
-      create_publisher<visualization_msgs::msg::MarkerArray>("/object_analytics/marker_publisher");
+      create_publisher<visualization_msgs::msg::MarkerArray>("/object_analytics/marker_publisher", 10);
 
 
     RCLCPP_INFO(get_logger(), "Start MarkerPublisher ...");

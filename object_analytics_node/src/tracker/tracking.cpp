@@ -173,12 +173,6 @@ bool Tracking::checkTimeZone(builtin_interfaces::msg::Time stamp)
   return false;
 }
 
-#if CV_VERSION_MINOR == 2
-cv::Ptr<cv::Tracker> Tracking::createTrackerByAlgo(std::string name)
-{
-  return cv::Tracker::create(name);
-}
-#else
 cv::Ptr<cv::Tracker> Tracking::createTrackerByAlgo(std::string name)
 {
   cv::Ptr<cv::Tracker> tracker;
@@ -201,7 +195,6 @@ cv::Ptr<cv::Tracker> Tracking::createTrackerByAlgo(std::string name)
 
   return tracker;
 }
-#endif
 
 }  // namespace tracker
 }  // namespace object_analytics_node

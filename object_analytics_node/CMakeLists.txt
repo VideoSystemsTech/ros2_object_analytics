@@ -114,7 +114,7 @@ ament_target_dependencies(object_analytics_node
 target_link_libraries(object_analytics_node object_analytics_common)
 
 if(${BUILD_TRACKING})
-  find_package(OpenCV 3.2 REQUIRED)
+  find_package(OpenCV REQUIRED)
   add_executable(tracker_regression src/tracker/tracking_regression.cpp
     src/dataset/tr_dataset.cpp
     src/dataset/trimg_dataset.cpp
